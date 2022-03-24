@@ -13,7 +13,7 @@ services:
           context: frontend
           dockerfile: Dockerfile
       ports:
-            - "3000:3000"
+            - "80:80"
     api:
       image: dmutoni/ebillingapi:latest
       build:
@@ -21,3 +21,10 @@ services:
           dockerfile: Dockerfile
       ports:
             - "8001:8001"
+    nginx:
+      image: dmutoni/nginx:latest
+      build:
+          context:  ngnix
+          dockerfile: Dockerfile
+      ports:
+            - "80:80"

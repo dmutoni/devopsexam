@@ -1,18 +1,20 @@
-FROM node:16-alpine 
-#specifying the working directory
+FROM node:17-alpine as build
+
 WORKDIR /usr/app
-#copy package.json to the working directory
-COPY ./package.json .
-RUN npm install
 
-COPY . .
+COPY ./package.json /usr/app
 
-RUN npm run build
+RUN npm install --production
 
-FROM nginx:stable-alpine
-COPY /usr/app/build /usr/share/nginx/html
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY . . 
 
-EXPOSE 3000
+CMD ["npm", "run", "start"]
 
-CMD [ "npm", "start" ]
+
+
+
+
+
+
+
+
