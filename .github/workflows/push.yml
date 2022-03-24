@@ -4,7 +4,7 @@ name: push
 on:
   push:
     branches:
-      - exam
+      - master
 jobs:
   push_to_registry:
     name: push to docker hub
