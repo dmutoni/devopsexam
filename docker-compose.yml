@@ -9,18 +9,18 @@ services:
             - "3306:3306"
     web:
       image: dmutoni/ebillingfrontend:latest  
+      tty: true
+      stdin_open: true
       build:
           context: frontend
           dockerfile: Dockerfile
-      ports:
-            - "80:80"
     api:
       image: dmutoni/ebillingapi:latest
+      tty: true
+      stdin_open: true
       build:
           context: backend
           dockerfile: Dockerfile
-      ports:
-            - "8001:8001"
     nginx:
       image: dmutoni/nginx:latest
       build:

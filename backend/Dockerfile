@@ -8,7 +8,5 @@ RUN yarn install
 COPY . .
 
 RUN yarn run build
-# RUN npx prisma migration dev
-EXPOSE 8001
 
 CMD [ "yarn", "dev" ]
