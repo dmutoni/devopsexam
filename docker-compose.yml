@@ -7,14 +7,6 @@ services:
             dockerfile: Dockerfile
         ports:
             - "3306:3306"
-    web:
-      image: dmutoni/ebillingfrontend:latest  
-      tty: true
-      stdin_open: true
-      build:
-          context: frontend
-          dockerfile: Dockerfile
-      ports: "80:3000"
     api:
       image: dmutoni/ebillingapi:latest
       tty: true
@@ -22,11 +14,21 @@ services:
       build:
           context: backend
           dockerfile: Dockerfile
-      ports: "80:8001"
+      ports: 
+            - "8001:8001"
+    web:
+      image: dmutoni/ebillingfrontend:latest  
+      tty: true
+      stdin_open: true
+      build:
+          context: frontend
+          dockerfile: Dockerfile
+      ports:
+            - "80:3000"
     nginx:
       image: dmutoni/nginx:latest
       build:
-          context:  ngnix
+          context:  nginx
           dockerfile: Dockerfile
       ports:
-            - "80:80"
+            - "81:80"
